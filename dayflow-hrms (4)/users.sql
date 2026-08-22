@@ -1,0 +1,29 @@
+USE dayflow_hrms;
+
+CREATE TABLE users (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+
+    full_name VARCHAR(150) NOT NULL,
+
+    email VARCHAR(255) NOT NULL UNIQUE,
+
+    password_hash VARCHAR(255) NOT NULL,
+
+    role ENUM('ADMIN', 'HR', 'EMPLOYEE')
+        NOT NULL DEFAULT 'EMPLOYEE',
+
+    phone VARCHAR(20),
+
+    profile_image VARCHAR(500),
+
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+
+    email_verified BOOLEAN NOT NULL DEFAULT FALSE,
+
+    last_login DATETIME NULL,
+
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
